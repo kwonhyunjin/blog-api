@@ -1,11 +1,11 @@
-import Joi from 'joi';
-import User from '../../models/user';
+import Joi from "joi";
+import User from "../../models/user";
 
 /*
   POST /api/auth/register
   {
-    username: 'velopert',
-    password: 'mypass123'
+    username: 'nana',
+    password: '12'
   }
 */
 export const register = async (ctx) => {
@@ -39,7 +39,7 @@ export const register = async (ctx) => {
     ctx.body = user.serialize();
 
     const token = user.generateToken();
-    ctx.cookies.set('access_token', token, {
+    ctx.cookies.set("access_token", token, {
       maxAge: 1000 * 60 * 60 * 24 * 7, // 7일
       httpOnly: true,
     });
@@ -51,8 +51,8 @@ export const register = async (ctx) => {
 /*
   POST /api/auth/login
   {
-    username: 'velopert',
-    password: 'mypass123'
+    username: 'nana',
+    password: '12'
   }
 */
 export const login = async (ctx) => {
@@ -79,7 +79,7 @@ export const login = async (ctx) => {
     }
     ctx.body = user.serialize();
     const token = user.generateToken();
-    ctx.cookies.set('access_token', token, {
+    ctx.cookies.set("access_token", token, {
       maxAge: 1000 * 60 * 60 * 24 * 7, // 7일
       httpOnly: true,
     });
@@ -105,6 +105,6 @@ export const check = async (ctx) => {
   POST /api/auth/logout
 */
 export const logout = async (ctx) => {
-  ctx.cookies.set('access_token');
+  ctx.cookies.set("access_token");
   ctx.status = 204; // No Content
 };

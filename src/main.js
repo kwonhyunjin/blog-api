@@ -20,7 +20,6 @@ mongoose
   })
   .then(() => {
     console.log('Connected to MongoDB');
-    //createFakeData();
   })
   .catch((e) => {
     console.error(e);
@@ -41,6 +40,7 @@ app.use(
     origin: '*',
   }),
 );
+
 // app 인스턴스에 라우터 적용
 app.use(router.routes()).use(router.allowedMethods());
 
